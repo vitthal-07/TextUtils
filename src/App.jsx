@@ -1,9 +1,17 @@
-// import { About } from "./Components/About"
+import { About } from "./Components/About"
 import { Navbar } from "./Components/Navbar"
 import React, {useState} from 'react'
 import "./App.css"
 import { TextForm } from "./Components/TextForm"
-import { Alert } from "./Components/Alert";
+import { Alert } from "./Components/Alert"
+
+import { 
+  Route, 
+  Routes, 
+  Link
+} from 'react-router-dom';
+
+
 function App() {
   const [mode, setMode] = useState("dark");
   const [alert, setAlert] = useState(null);
@@ -34,8 +42,10 @@ function App() {
       <Navbar ToggleMode={ToggleMode} mode={mode}/>
       <Alert alert={alert}/>
       <div className="container">
-        {/* <About/> */}
-        <TextForm ToggleMode={ToggleMode} showAlert={showAlert} mode={mode}/>
+        <Routes>
+          <Route exact path="/" element={<TextForm ToggleMode={ToggleMode} showAlert={showAlert} mode={mode}/>}/>
+          <Route exact path="/about" element={<About/>} />
+        </Routes>
       </div>
     </>
   )
