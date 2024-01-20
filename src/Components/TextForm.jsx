@@ -19,9 +19,7 @@ export const TextForm = (props) => {
         props.showAlert("Text has been cleared!" , "success");
     }
     const copyText = () =>{
-        let text = document.querySelector("#myText");
-        text.select();
-        navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
         props.showAlert("Text has been copied to clipboard!" , "success");
     }
     const removeExtraSpaces = () =>{
